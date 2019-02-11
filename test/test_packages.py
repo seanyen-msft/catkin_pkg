@@ -58,3 +58,10 @@ def test_find_packages_invalid_version():
         exception_message = str(e)
         assert version in exception_message
         assert path in exception_message
+
+@in_temporary_directory
+def test_find_packages_with_large_amount_packages():
+    for x in range(500):
+        _create_pkg_in_dir("test%s" % x)
+
+    find_package_paths('.')
