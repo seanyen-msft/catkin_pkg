@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from catkin_pkg.package import InvalidPackage
@@ -62,7 +63,9 @@ def test_find_packages_invalid_version():
 
 @in_temporary_directory
 def test_find_packages_with_large_amount_packages():
-    for x in range(20000):
+    for x in range(50000):
         _create_pkg_in_dir('test%s' % x)
 
+    print(datetime.datetime.now())
     find_package_paths('.')
+    print(datetime.datetime.now())
