@@ -9,7 +9,7 @@ from catkin_pkg.packages import find_packages_allowing_duplicates
 from .util import in_temporary_directory
 
 
-def _create_pkg_in_dir(path, version='0.1.0'):
+def _create_pkg_in_dir(path, version='0.1.0', additional=''):
     path = os.path.abspath(path)
     os.makedirs(path)
 
@@ -24,7 +24,7 @@ def _create_pkg_in_dir(path, version='0.1.0'):
   <maintainer email="foo@bar.com">Foo Bar</maintainer>
   {2}
 </package>
-""".format(path.split('/')[-1], version, '<depend>x</depend>' * 1000)
+""".format(path.split('/')[-1], version, additional)
 
     with open(os.path.join(path, 'package.xml'), 'w+') as f:
         f.write(template)
@@ -64,8 +64,9 @@ def test_find_packages_invalid_version():
 
 @in_temporary_directory
 def test_find_packages_with_large_amount_packages():
-    for x in range(50000):
-        _create_pkg_in_dir('test%s' % x)
+    additional = '<depend>x</depend>' * 10000
+    for x in range(10000):
+        _create_pkg_in_dir('test%s' % x, additional=additional)
 
     print(datetime.datetime.now())
     find_package_paths('.')
