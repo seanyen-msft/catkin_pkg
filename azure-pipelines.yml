@@ -20,7 +20,7 @@ jobs:
       python -m pip install flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes
       python -m pip install mock
   - script: |
-      python -m nose --with-xunit
+      python -m nose -s --with-xunit
   - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
