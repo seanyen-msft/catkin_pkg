@@ -64,10 +64,10 @@ def test_find_packages_invalid_version():
 
 @in_temporary_directory
 def test_find_packages_with_large_amount_packages():
-    additional = '<depend>x</depend>' * 10000
-    for x in range(10000):
+    additional = '<depend>x</depend>' * 1000
+    for x in range(1000):
         _create_pkg_in_dir('test%s' % x, additional=additional)
 
     print(datetime.datetime.now())
-    find_package_paths('.')
+    find_packages_allowing_duplicates('.')
     print(datetime.datetime.now())
