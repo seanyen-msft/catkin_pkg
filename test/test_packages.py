@@ -22,8 +22,9 @@ def _create_pkg_in_dir(path, version='0.1.0'):
   <license>BSD</license>
 
   <maintainer email="foo@bar.com">Foo Bar</maintainer>
+  {2}
 </package>
-""".format(path.split('/')[-1], version)
+""".format(path.split('/')[-1], version, '<depend>x</depend>' * 1000)
 
     with open(os.path.join(path, 'package.xml'), 'w+') as f:
         f.write(template)
