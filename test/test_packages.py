@@ -24,7 +24,7 @@ def _create_pkg_in_dir(path, version='0.1.0', additional=''):
   <maintainer email="foo@bar.com">Foo Bar</maintainer>
   {2}
 </package>
-""".format(path.split('/')[-1], version, additional)
+""".format(path.split(os.sep)[-1], version, additional)
 
     with open(os.path.join(path, 'package.xml'), 'w+') as f:
         f.write(template)
