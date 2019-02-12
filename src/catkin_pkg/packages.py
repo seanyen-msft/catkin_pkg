@@ -144,7 +144,7 @@ def find_packages_allowing_duplicates(basepath, exclude_paths=None, exclude_subs
     if not data:
         return {}
 
-    parallel = False
+    parallel = len(data) > 100
     if parallel:
         try:
             pool = multiprocessing.Pool()
