@@ -64,7 +64,7 @@ def test_find_packages_invalid_version():
 
 @in_temporary_directory
 def test_find_packages_with_large_amount_packages():
-    additional = '<depend>x</depend>' * 1000
+    additional = '<build_depend>x</build_depend>' * 1000
     for x in range(1000):
         _create_pkg_in_dir('test%s' % x, additional=additional)
 
