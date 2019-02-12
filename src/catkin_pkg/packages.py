@@ -46,7 +46,7 @@ if os.name == 'nt':
     # This restriction requires downstream tools to be modified to
     # work. Instead, let's fallback to threading wrapper to get
     # around it and still keep the parallelism on Windows.
-    import multiprocessing.dummy as multiprocessing
+    import multiprocessing
 else:
     import multiprocessing
 
